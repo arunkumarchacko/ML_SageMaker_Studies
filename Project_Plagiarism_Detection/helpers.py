@@ -97,16 +97,23 @@ def create_text_column(df, file_directory='data/'):
     # for each file (row) in the df, read in the file 
     for row_i in df.index:
         filename = df.iloc[row_i]['File']
-        #print(filename)
-        file_path = file_directory + filename
-        with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
 
-            # standardize text using helper function
-            file_text = process_file(file)
-            # append processed text to list
-            text.append(file_text)
+        # standardize text using helper function
+        file_text = read_and_process_file(filename)
+        # append processed text to list
+        text.append(file_text)
     
     # add column to the copied dataframe
     text_df['Text'] = text
     
     return text_df
+
+def read_and_process_file(filename, file_directory='data/'):
+    file_path = file_directory + filename
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+
+            # standardize text using helper function
+            return process_file(file)
+
+def test():
+    print("test")
