@@ -110,10 +110,6 @@ def create_text_column(df, file_directory='data/'):
 
 def read_and_process_file(filename, file_directory='data/'):
     file_path = file_directory + filename
-        with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+    with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+        return process_file(file)
 
-            # standardize text using helper function
-            return process_file(file)
-
-def test():
-    print("test")
