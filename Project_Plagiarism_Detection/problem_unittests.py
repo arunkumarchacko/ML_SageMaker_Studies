@@ -116,10 +116,14 @@ def test_lcs(df, lcs_word):
         orig_rows = df[(df['Class'] == -1)]
         orig_row = orig_rows[(orig_rows['Task'] == task)]
         source_text = orig_row['Text'].values[0]
+        print(answer_text)
+        print(source_text)
         # calc lcs
         val = lcs_word(answer_text, source_text)
         results.append(val)
-        
+    
+    #print(results)
+    #print(lcs_vals)
     # check correct results
     assert all(np.isclose(results, lcs_vals, rtol=1e-05)), 'LCS calculations are incorrect.'
     
